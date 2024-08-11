@@ -1,7 +1,4 @@
-// This is a single-line comment in JavaScript
 
-// Declaring a variable to store the message
-const message = "Hello, World!";
+var helloW = "Hello, World!";
 
-// Outputting the message to the console
-console.log(message);
+console.log(helloW);
