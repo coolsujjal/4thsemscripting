@@ -1,0 +1,33 @@
+<!-- 1. Create an HTML document with JavaScript embedded that 
+takes a list of numbers as input and stores them in an array.
+2. Write a function that uses a forEach loop to iterate through
+ the array and calculates the sum of all elements.
+3. Use the Date object to display the current date and time when
+ the calculation is complete.
+4. Interacting with the Browser and Document Object Model (DOM):
+Write a JavaScript program that uses the DOM to change the 
+background color of a webpage when a button is clicked.
+Additionally, create buttons to open and close a new window using 
+the window object and demonstrate manipulating frames if possible
+ in your browser environment. in js
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="numbersInput">Enter numbers (comma-separated):</label>
+    <input type="text" id="numbersInput" placeholder="e.g. 1,2,3,4,5">
+    <button action="submit" onclick="calculateSum()" id="button1">submit</button>
+
+    <h1 id="sum"></h1>
+    <h1 id="dateTime"></h1>
+
+    <button onclick="openNewWindow()">Open New Window</button>
+    <button onclick="closeNewWindow()">Close New Window</button>
+    <script src="script.js"></script>
+</body>
+</html>
