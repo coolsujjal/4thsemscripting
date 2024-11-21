@@ -1,0 +1,56 @@
+<!-- Labwork:
+1. Create an array to store the names of participants who register.
+2. Use a forEach loop to display the participant list on the webpage.
+3. Create and invoke the following functions:
+● A function to validate the form data.
+● A function to calculate the total number of registrations and display it dynamically.
+4. Dynamically update the webpage to show registration confirmation using DOM methods
+like document.getElementById() or document.querySelector().
+5. Create a function to change the background color of the page when the user hovers over
+the registration form.
+6. Add event listeners to the form fields to:
+● Validate the name field (must not be empty).
+● Check if the email field contains a valid email address.
+● Display a tooltip with instructions when the user focuses on the password field.
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+         /* Style for tooltip */
+         .tooltip {
+             display: none; /* Initially hidden */
+             position: absolute;
+             background-color: #333;
+             color: #fff;
+             padding: 8px;
+             border-radius: 5px;
+             font-size: 12px;
+             z-index: 1000;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+         }
+     </style>
+ 
+ </head>
+ <body>
+     <form onsubmit="registername(event)" >
+         <label for="name">Enter participant's name: </label>
+         <input type="text" id="name" placeholder="name">
+         <span id="usernameTooltip" class="tooltip">Usernames can only include letters, numbers, and underscores.</span>
+         <label for="email">Enter email:</label>
+         <input type="email" id="email" placeholder="email">
+         <label for="password"></label>
+         <input type="text" id="password" placeholder="password">
+         <span id="passwordTooltip" class="tooltip">Password must be at least 8 characters long, include a number, and a special character.</span>
+         <button type="submit" onclick="validateform()">submit</button>
+     </form>
+     <p id="validationResult"></p>
+     <!-- <button onclick="displaynames()">names </button> -->
+     <h2 id="names"></h2>
+     <script src="script.js"></script>
+ </body>
+ </html>
