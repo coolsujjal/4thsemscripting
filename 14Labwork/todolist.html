@@ -1,0 +1,118 @@
+<!-- a. To-Do List Application:
+● Users can add, delete, and mark tasks as completed.
+● DOM elements dynamically update as tasks are added or removed.
+● Events such as clicking on a task to mark it as complete or clicking a delete
+button to remove a task are handled. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        input {
+            width: 70%;
+        }
+        button {
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .task span {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .buttons {
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enhanced To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button id="addTask">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskButton = document.getElementById('addTask');
+        const taskList = document.getElementById('taskList');
+
+        let currentEditTask = null;
+
+        // Add or Update Task
+        addTaskButton.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+            if (taskText) {
+                if (currentEditTask) {
+                    // Update existing task
+                    currentEditTask.querySelector('span').textContent = taskText;
+                    currentEditTask = null;
+                    addTaskButton.textContent = 'Add Task';
+                } else {
+                    // Add new task
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('task');
+                    listItem.innerHTML = `
+                        <span>${taskText}</span>
+                        <div class="buttons">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
+                    `;
+                    taskList.appendChild(listItem);
+
+                    // Mark Task as Completed
+                    listItem.querySelector('span').addEventListener('click', (e) => {
+                        e.target.classList.toggle('completed');
+                    });
+
+                    // Edit Task
+                    listItem.querySelector('.edit').addEventListener('click', () => {
+                        taskInput.value = listItem.querySelector('span').textContent;
+                        currentEditTask = listItem;
+                        addTaskButton.textContent = 'Update Task';
+                    });
+
+                    // Delete Task
+                    listItem.querySelector('.delete').addEventListener('click', () => {
+                        listItem.remove();
+                    });
+                }
+                taskInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
